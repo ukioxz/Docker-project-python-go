@@ -1,5 +1,10 @@
 import React , {useContext} from 'react';
 import Context from '../context';
+import styled, { keyframes } from 'styled-components';
+import { bounceInRight } from 'react-animations';
+
+
+const BounceInRight = styled.div`animation: 2s ${keyframes`${bounceInRight}`} `;
 
 const styles = {
   li: {
@@ -36,7 +41,7 @@ function TodoItem({todo, index, onChange}) {
     classes.push('done')
   }
   return(
-  <li style={styles.itemDelete}>
+  <BounceInRight><li style={styles.itemDelete}>
   <span className={classes.join(' ')}>
   <input
   type="checkBox"
@@ -47,7 +52,7 @@ function TodoItem({todo, index, onChange}) {
   {todo.title}
   </span>
   <button className='rm' onClick={removeTodo.bind(null,todo.id)}>&times;</button>
-  </li>
+  </li></BounceInRight>
 );
 }
 
