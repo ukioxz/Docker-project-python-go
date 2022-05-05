@@ -2,6 +2,10 @@ import React from 'react';
 import TodoList from './todo/todo';
 import Context from './context';
 import AddTodo from './todo/addTodo';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
+
+const FadeIn = styled.div`animation: 2s ${keyframes`${fadeIn}`} `;
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -28,8 +32,8 @@ function App() {
   return (
     <Context.Provider value={{removeTodo}}>
     <div className='wrapper'>
-    <h1>Todo list</h1>
-    <AddTodo onCreate={addTodo}/>
+    <FadeIn><h1>Todo list</h1></FadeIn>
+    <FadeIn><AddTodo onCreate={addTodo}/></FadeIn>
     {todos.length ? (
       <TodoList todos={todos} onToggle={toggleTodo}/>
     ) : (
