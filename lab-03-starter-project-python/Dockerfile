@@ -2,7 +2,7 @@ FROM python:3.10-buster
 
 WORKDIR /app
 
-COPY . .
+COPY ./requirements/backend.in /app/requirements/backend.in
 
 RUN python -m venv ./.venv
 RUN . ./.venv/bin/activate
