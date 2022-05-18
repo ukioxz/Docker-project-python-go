@@ -6,9 +6,11 @@ WORKDIR /app
 
 COPY ./requirements/backend.in /app/requirements/backend.in
 
-RUN python -m venv ./.venv
-RUN . ./.venv/bin/activate
+RUN python -m venv ./.venv && . ./.venv/bin/activate
+
 RUN pip install -r requirements/backend.in
+
+FROM python:3.10-alpine
 
 COPY ./spaceship /app/spaceship
 COPY ./build/index.html /app/build/index.html
