@@ -1,12 +1,15 @@
-FROM node:alpine AS buil
+FROM node:14.17-alpine AS build
 
 WORKDIR /app
 
 COPY package.json ./
 
-RUN npm install 
+RUN npm install
+
+FROM gcr.io/distroless/nodejs:14
 
 COPY . .
+
 
 EXPOSE 3000
 
